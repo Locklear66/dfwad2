@@ -1,0 +1,77 @@
+/* Layout: switchboard. Topo header, two large "line" cards (park line, range line) with tap-to-call numbers, then a call-prep checklist beside the deposit facts. */
+
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:17px;line-height:1.55;margin:0}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+.wrap{width:100%;max-width:1160px;margin-inline:auto;padding-inline:20px}
+h1,h2,h3{font-family:var(--display);text-transform:uppercase;line-height:.95;margin:0;text-wrap:balance;letter-spacing:.005em}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.btn{display:inline-flex;align-items:center;font-family:var(--display);font-weight:800;text-transform:uppercase;letter-spacing:.04em;font-size:19px;text-decoration:none;padding:.7em 1.3em;border:2px solid var(--fg);color:var(--fg);background:transparent;cursor:pointer;transition:transform .15s}
+.btn:hover{transform:translate(-2px,-2px);box-shadow:3px 3px 0 var(--fg)}
+.btn.primary{background:var(--accent);color:var(--accent-ink);border-color:var(--accent-ink)}
+.btn.primary:hover{box-shadow:3px 3px 0 var(--accent-ink)}
+
+header.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--bg);border-bottom:2px solid var(--fg)}
+.bar{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;padding-block:12px}
+.brand{font-family:var(--display);font-weight:900;font-size:28px;text-transform:uppercase;text-decoration:none;line-height:1;display:flex;align-items:center;gap:10px}
+.brand .mark{width:30px;height:30px;border:3px solid var(--fg);border-radius:50%;position:relative;flex:none}
+.brand .mark::after{content:"";position:absolute;inset:5px;background:var(--accent);border-radius:50%;border:2px solid var(--fg)}
+.brand small{display:block;font-family:var(--mono);font-size:10px;letter-spacing:.16em;font-weight:500;color:var(--muted)}
+nav ul{list-style:none;margin:0;padding:0;display:flex;gap:4px 22px;flex-wrap:wrap;align-items:center}
+nav a{font-family:var(--display);font-weight:700;text-transform:uppercase;font-size:19px;letter-spacing:.05em;text-decoration:none;padding:6px 0;border-bottom:3px solid transparent}
+nav a:hover{border-color:var(--accent)}
+nav .cta{background:var(--accent);color:var(--accent-ink);padding:6px 14px;border:2px solid var(--accent-ink)}
+nav .cta[aria-current]{box-shadow:3px 3px 0 var(--fg)}
+
+.intro{position:relative;overflow:hidden;border-bottom:2px solid var(--fg)}
+.intro svg{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.intro .wrap{position:relative;padding-block:56px 48px}
+.intro h1{font-weight:900;font-size:clamp(56px,10vw,128px)}
+.intro h1 em{font-style:normal;background:var(--accent);color:var(--accent-ink);padding:0 .12em}
+.intro p{max-width:34em;font-size:20px;margin:20px 0 0}
+
+section{padding-block:64px;border-bottom:1px solid var(--line)}
+.lines{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px}
+.line{background:var(--surface);border:2px solid var(--fg);padding:28px;display:flex;flex-direction:column;gap:16px;min-width:0}
+.line.hi{background:var(--accent);color:var(--accent-ink)}
+.line.hi .eyebrow{color:var(--accent-ink)}
+.line h2{font-size:clamp(36px,4.6vw,56px);font-weight:900}
+.line p{margin:0}
+.line .tags{display:flex;gap:8px;flex-wrap:wrap}
+.tag{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;border:1.5px solid currentColor;padding:3px 8px}
+.num{font-family:var(--display);font-weight:900;font-size:clamp(44px,8vw,76px);line-height:.9;text-decoration:none;border-bottom:4px solid currentColor;width:max-content;max-width:100%;font-variant-numeric:tabular-nums}
+.line .acts{display:flex;gap:10px;flex-wrap:wrap;margin-top:auto}
+.line.hi .btn{border-color:var(--accent-ink);color:var(--accent-ink)}
+.line.hi .btn:hover{box-shadow:3px 3px 0 var(--accent-ink)}
+.line .btn.fill{background:var(--accent-ink);color:var(--accent)}
+.hint{font-size:14px;color:var(--muted);min-height:1.4em}
+.line.hi .hint{color:var(--accent-ink)}
+
+.prep{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:40px 56px}
+@media(max-width:860px){.prep{grid-template-columns:1fr}}
+.prep h2{font-size:clamp(40px,6vw,72px);font-weight:900;margin:8px 0 14px}
+.prep p{margin:0 0 14px;color:var(--muted);max-width:34em}
+ul.check{list-style:none;margin:20px 0 0;padding:0;border-top:2px solid var(--fg)}
+ul.check li{border-bottom:1px solid var(--line)}
+ul.check label{display:flex;gap:14px;align-items:flex-start;padding:14px 0;cursor:pointer}
+ul.check input{appearance:none;-webkit-appearance:none;flex:none;width:24px;height:24px;border:2px solid var(--fg);background:var(--surface);margin:2px 0 0;cursor:pointer;display:grid;place-content:center;border-radius:0}
+ul.check input::after{content:"";width:12px;height:12px;background:var(--accent);border:2px solid var(--fg);rotate:45deg;scale:0;transition:scale .12s}
+ul.check input:checked::after{scale:1}
+ul.check input:checked+span{color:var(--muted);text-decoration:line-through;text-decoration-color:var(--accent);text-decoration-thickness:2px}
+ul.check b{display:block;font-weight:600}
+ul.check small{display:block;color:var(--muted);font-size:15px}
+.facts{background:var(--deep);color:var(--deep-fg);padding:28px;border:2px solid var(--fg);align-self:start}
+.facts .eyebrow{color:#9fb7a6}
+.facts h3{font-size:34px;font-weight:800;margin:8px 0 6px}
+.fr{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px 16px;align-items:baseline;padding:13px 0;border-bottom:1px solid #3a5b49}
+.fr:first-of-type{border-top:1px solid #3a5b49}
+.fr span.amt{font-family:var(--display);font-weight:800;font-size:34px;line-height:1}
+.facts p{color:#c3d4c7;font-size:15px;margin:14px 0 0}
+.facts .btn{border-color:var(--deep-fg);color:var(--deep-fg);margin-top:18px}
+.facts .btn:hover{box-shadow:3px 3px 0 var(--accent)}
+
+footer.site{background:var(--deep);color:var(--deep-fg);padding-block:22px;font-size:14px}
+footer.site .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+footer.site a{margin-right:16px}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}

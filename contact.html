@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#edf0e8" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0b1812" media="(prefers-color-scheme: dark)">
+<title>Contact DFW Adventure Park</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800;900&family=Barlow:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap">
+<link rel="stylesheet" href="css/theme.css">
+<link rel="stylesheet" href="css/contact.css">
+<link rel="stylesheet" href="css/mobile.css">
+</head>
+<body>
+<header class="top">
+  <div class="wrap bar">
+    <a class="brand" href="index.html" aria-label="DFW Adventure Park home">
+      <span class="mark" aria-hidden="true"></span>
+      <span>DFW Adventure Park<small>Northlake, Texas</small></span>
+    </a>
+    <nav aria-label="Main">
+      <ul>
+        <li><a href="pricing.html">Pricing</a></li>
+        <li><a href="index.html#events">Events</a></li>
+        <li><a href="#top" aria-current="page">Contact</a></li>
+        <li><a class="cta" href="book-now.html">Book Now</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <div class="intro">
+    <svg id="topo" aria-hidden="true" preserveAspectRatio="xMidYMid slice" viewBox="0 0 1200 400"></svg>
+    <div class="wrap">
+      <p class="eyebrow">Phone · Address · Directions</p>
+      <h1>Get in <em>touch.</em></h1>
+      <p>Call the park to book a party, group or team event, or call the range for shotgun sports. Find us in Northlake, one mile from Texas Motor Speedway.</p>
+    </div>
+  </div>
+
+  <section>
+    <div class="wrap grid">
+      <div>
+        <p class="eyebrow">Who to call</p>
+        <h2 class="sec">Pick your line</h2>
+        <div class="route">
+          <div class="stop">
+            <div>
+              <h3>Paintball, airsoft &amp; team building</h3>
+              <p>Parties, groups and corporate events. Reservations are made by phone.</p>
+              <div class="alt">Toll-free: <a href="tel:8005871379">(800) 587-1379</a></div>
+            </div>
+            <a class="num" href="tel:8178540085">(817) 854-0085</a>
+          </div>
+          <div class="stop">
+            <div>
+              <h3>Shotgun sports</h3>
+              <p>Trap and skeet, International Skeet, 5-Stand and sporting clays.</p>
+            </div>
+            <a class="num" href="tel:8172966774">(817) 296-6774</a>
+          </div>
+        </div>
+        <p style="margin:22px 0 0;color:var(--muted)">Want rates before you call? <a href="pricing.html">See pricing</a>. Ready to book? <a href="book-now.html">Here's what to have on hand</a>.</p>
+      </div>
+
+      <aside class="addr" aria-label="Park address">
+        <span class="eyebrow">Visit the park</span>
+        <h2>DFW Adventure Park</h2>
+        <address id="addr">13055 Cleveland Gibbs Rd.<br>Northlake, Texas 76262</address>
+        <div class="acts">
+          <a class="btn primary" href="https://www.google.com/maps/search/?api=1&amp;query=13055+Cleveland+Gibbs+Rd+Northlake+TX+76262">Get directions</a>
+          <button class="btn" type="button" id="copy">Copy address</button>
+        </div>
+        <div class="hint" id="hint" role="status"></div>
+        <div class="meta">
+          <div><b>170+ acres</b><span>Woods, creek, trails</span></div>
+          <div><b>1 mile</b><span>From Texas Motor Speedway</span></div>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <section style="padding-block:0">
+    <div class="wrap" style="padding-block:64px">
+      <div class="find">
+        <div>
+          <span class="eyebrow">Follow</span>
+          <h3>Social</h3>
+          <p>Event announcements and updates.</p>
+          <div class="social">
+            <a class="btn" href="https://www.facebook.com/dfwadventurepark">Facebook</a>
+            <a class="btn" href="https://twitter.com/DFWAP">X</a>
+          </div>
+        </div>
+        <div>
+          <span class="eyebrow">Plan</span>
+          <h3>Before you go</h3>
+          <p>Check what each activity costs and how deposits work.</p>
+          <a class="btn" href="pricing.html">Pricing</a>
+        </div>
+        <div>
+          <span class="eyebrow">Reserve</span>
+          <h3>Ready to book</h3>
+          <p>Parties, groups and team events are booked by phone.</p>
+          <a class="btn primary" href="book-now.html">Book now</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <span>13055 Cleveland Gibbs Rd., Northlake, Texas 76262</span>
+    <span>© 2026 DFW Adventure Park. All rights reserved.</span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var svg=document.getElementById('topo'),NS='http://www.w3.org/2000/svg';
+  function ring(cx,cy,r,seed){
+    var pts=[],n=72;
+    for(var i=0;i<n;i++){
+      var a=i/n*Math.PI*2;
+      var w=1+0.16*Math.sin(a*3+seed)+0.09*Math.sin(a*5-seed*1.7)+0.05*Math.sin(a*9+seed*.6);
+      pts.push([cx+Math.cos(a)*r*w*1.35,cy+Math.sin(a)*r*w*.8]);
+    }
+    var d='M'+pts[0][0].toFixed(1)+' '+pts[0][1].toFixed(1);
+    for(var j=0;j<n;j++){
+      var p0=pts[(j-1+n)%n],p1=pts[j],p2=pts[(j+1)%n],p3=pts[(j+2)%n];
+      d+=' C'+(p1[0]+(p2[0]-p0[0])/6).toFixed(1)+' '+(p1[1]+(p2[1]-p0[1])/6).toFixed(1)+' '+(p2[0]-(p3[0]-p1[0])/6).toFixed(1)+' '+(p2[1]-(p3[1]-p1[1])/6).toFixed(1)+' '+p2[0].toFixed(1)+' '+p2[1].toFixed(1);
+    }
+    return d+'Z';
+  }
+  [[990,210,3.1,24],[180,370,1.3,16]].forEach(function(h,k){
+    for(var i=1;i<=h[3];i++){
+      var p=document.createElementNS(NS,'path');
+      p.setAttribute('d',ring(h[0],h[1],i*15,h[2]+i*0.05));
+      p.setAttribute('fill','none');
+      p.setAttribute('stroke','var(--contour)');
+      p.setAttribute('stroke-width',i%5===0?'1.8':'1');
+      p.setAttribute('opacity',k?'.6':'.9');
+      svg.appendChild(p);
+    }
+  });
+
+  // Copy address: clipboard may be refused in some viewers, so fall back to selecting the text.
+  var hint=document.getElementById('hint');
+  document.getElementById('copy').addEventListener('click',function(){
+    var text='DFW Adventure Park, 13055 Cleveland Gibbs Rd., Northlake, Texas 76262';
+    function fallback(){
+      var r=document.createRange();r.selectNodeContents(document.getElementById('addr'));
+      var s=window.getSelection();s.removeAllRanges();s.addRange(r);
+      hint.textContent='Address selected. Press copy on your device.';
+    }
+    try{navigator.clipboard.writeText(text).then(function(){hint.textContent='Address copied.';},fallback);}catch(e){fallback();}
+  });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,134 @@
+/* Mobile and touch layer, shared by every page. Load it AFTER the page's own css file.
+   Sections: 1) all screens (touch + safe areas)  2) touch devices (no sticky hover)
+             3) up to 640px (phones)  4) up to 400px (small phones). */
+
+/* ---------- 1) All screens ---------- */
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%;-webkit-tap-highlight-color:rgba(242,194,0,.35)}
+body{margin:0;overflow-wrap:break-word}
+a,button,label,summary{touch-action:manipulation}
+/* Keep content out of notches when a phone is in landscape (needs viewport-fit=cover). */
+.wrap{padding-inline:max(20px,env(safe-area-inset-left),env(safe-area-inset-right))}
+footer.site{padding-bottom:calc(22px + env(safe-area-inset-bottom,0px))}
+.btn:active{transform:translate(1px,1px)}
+/* Grids that used a 300px minimum overflowed phones narrower than ~340px. */
+.reviews,.lines{grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr))}
+
+/* ---------- 2) Touch devices: hover effects must not stick after a tap ---------- */
+@media (hover:none){
+  .btn:hover,.btn.primary:hover,.row .btn:hover,.addr .btn:hover,.addr .btn.primary:hover,.facts .btn:hover,.line.hi .btn:hover{transform:none!important;box-shadow:none!important}
+  .station:hover{background:var(--surface);color:inherit}
+  .station:hover .eyebrow,.station:hover p{color:var(--muted)}
+  .jump a:hover,.num:hover{background:transparent;color:inherit}
+  nav a:hover:not([aria-current]){border-color:transparent}
+  .station:active{background:var(--accent);color:var(--accent-ink)}
+  .station:active .eyebrow,.station:active p{color:var(--accent-ink)}
+}
+
+/* ---------- 2b) Small or short screens (phones, landscape phones, small tablets) ---------- */
+/* When the header wraps to two rows it is 100px+ tall, so don't pin it to the top. */
+@media (max-width:900px),(max-height:500px){
+  header.top{position:static}
+}
+
+/* ---------- 3) Phones ---------- */
+@media (max-width:640px){
+  /* Header: a sticky 170-230px header ate a quarter of the screen. Make it a compact
+     two-row bar (no longer sticky, see 2b): brand on top, four tap targets underneath. */
+  .bar{flex-direction:column;align-items:stretch;gap:2px;padding-block:8px 6px}
+  .brand{font-size:22px;gap:8px;min-height:44px}
+  .brand .mark{width:26px;height:26px;border-width:2.5px}
+  .brand .mark::after{inset:4px}
+  .brand small{font-size:9px}
+  nav ul{flex-wrap:nowrap;justify-content:space-between;gap:6px}
+  nav li{display:flex}
+  nav a{display:flex;align-items:center;justify-content:center;min-height:44px;padding:0 4px;font-size:16px;letter-spacing:.03em;white-space:nowrap}
+  nav .cta{padding:0 12px}
+
+  /* Type */
+  .hero h1{font-size:clamp(46px,15vw,72px)}
+  .intro h1{font-size:clamp(44px,14vw,72px)}
+  /* `.intro p` (20px) was also catching the small eyebrow line above each page title */
+  .intro p.eyebrow{font-size:11.5px;margin:0 0 12px;max-width:none}
+  .hero p.lead,.intro p{font-size:18px}
+  .hero .wrap{padding-block:40px 32px}
+  .intro .wrap{padding-block:36px 32px}
+  .eyebrow{font-size:11.5px;letter-spacing:.12em}
+  section{padding-block:48px}
+  .head{margin-bottom:24px}
+  blockquote p{font-size:17px}
+
+  /* Buttons: full-width, thumb-sized */
+  .btn{min-height:50px;justify-content:center}
+  .hero .actions .btn,.line .acts .btn,.addr .acts .btn,.row .btn{flex:1 1 100%;display:flex;width:100%}
+  .row{padding:22px 0;gap:14px}
+  .social .btn,.find .btn{flex:1 1 100%;display:flex;width:100%}
+  .call .wrap .btn{width:100%}
+
+  /* Card padding */
+  .line,.addr,.card,.legend,blockquote,.find div{padding:20px}
+  .station{padding:20px 18px}
+  .station h3{font-size:34px}
+
+  /* Single-column rules: stacked blocks must not keep their right-hand dividers */
+  .sec,.about,.prep,.grid{grid-template-columns:minmax(0,1fr)}   /* minmax(0,..) stops min-content blowout (pricing overflowed at 320px) */
+  .facts div,.station,.find div{border-right:0}
+  .facts div{border-bottom:1px solid var(--line);padding:14px 20px}
+  .facts div:last-child{border-bottom:0}
+  .find div{border-bottom:1px solid var(--fg)}
+  .find div:last-child{border-bottom:0}
+  .stations .station:last-child{border-bottom:0}
+  /* contact + book-now "facts" is a dark card, not the home page strip */
+  .prep .facts{padding:20px}
+
+  /* Phone numbers: big, tappable, never wider than the card */
+  .num{font-size:clamp(32px,10.5vw,52px);padding-block:2px}
+  .phones a{padding-block:8px}
+  .phones{gap:0}
+  .fr span.amt,.rate .amt{font-size:30px}
+
+  /* Pricing: jump bar becomes a swipeable single row that sticks to the top while scrolling */
+  .jump{position:sticky;top:env(safe-area-inset-top,0px);z-index:15}
+  .jump .wrap{flex-wrap:nowrap;overflow-x:auto;gap:8px;padding-block:10px;scroll-snap-type:x proximity;scroll-padding-inline:16px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+  .jump .wrap::-webkit-scrollbar{display:none}
+  .jump a{flex:none;white-space:nowrap;display:flex;align-items:center;min-height:40px;padding:0 14px;scroll-snap-align:start}
+  section{scroll-margin-top:68px}
+
+  /* Pricing: tables fit the screen instead of scrolling sideways; scroll is only a fallback */
+  table{min-width:0}
+  th,td{padding:12px 8px}
+  th{font-size:11px;letter-spacing:.06em}
+  td{font-size:26px}
+  td:first-child{font-size:15px;line-height:1.25;padding-left:12px}
+  th:first-child{padding-left:12px}
+  .price{font-size:60px}
+  .cards,.cols2{gap:16px}
+
+  /* Small text links get a 44px-tall hit area without changing the layout */
+  blockquote footer a{display:inline-flex;align-items:center;min-height:44px;margin-block:-12px}
+
+  /* Footer: stack, with real tap targets for the links */
+  footer.site .wrap{flex-direction:column;gap:6px}
+  footer.site a{display:inline-block;padding:10px 0;margin-right:20px}
+}
+
+/* ---------- 4) Small phones (320-400px) ---------- */
+@media (max-width:400px){
+  .wrap{padding-inline:max(16px,env(safe-area-inset-left),env(safe-area-inset-right))}
+  .brand{font-size:20px}
+  nav ul{gap:2px}
+  nav a{font-size:14px;letter-spacing:0;padding:0 3px}
+  nav .cta{padding:0 8px}
+  .hero h1{font-size:clamp(42px,14.5vw,60px)}
+  .station h3{font-size:32px}
+  .head h2,.sec h2,.prep h2,.about h2,.call h2{font-size:clamp(36px,11vw,44px)}
+  .price{font-size:54px}
+  .line h2{font-size:34px}
+  td{font-size:23px}
+  td:first-child{font-size:14px}
+}
+
+/* ---------- 5) Very narrow (<=340px, e.g. iPhone SE 1st gen) ---------- */
+@media (max-width:340px){
+  nav a{font-size:13px;padding:0 2px}
+  nav .cta{padding:0 6px}
+}

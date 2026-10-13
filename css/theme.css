@@ -1,0 +1,22 @@
+/* Theme: colors (light and dark) and fonts shared by every page. Edit here to restyle the whole site. */
+:root{
+  --bg:#edf0e8;        /* pale lichen */
+  --surface:#f8faf4;   /* card ground */
+  --fg:#102219;        /* pine ink */
+  --muted:#4d5f54;     /* moss grey */
+  --line:#c5cdbf;      /* field rule */
+  --accent:#f2c200;    /* course-flag yellow */
+  --accent-ink:#102219;/* text on accent */
+  --deep:#0f2a22;      /* pine panel */
+  --deep-fg:#e9f0e4;
+  --contour:#9fb09a;
+  --display:"Big Shoulders Display","Arial Narrow",Impact,sans-serif;
+  --body:"Barlow",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0b1812;--surface:#12251c;--fg:#e6eee1;--muted:#9bb0a2;--line:#27402f;
+  --accent:#f2c200;--accent-ink:#102219;--deep:#07110d;--deep-fg:#e9f0e4;--contour:#2c4a39;color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0b1812;--surface:#12251c;--fg:#e6eee1;--muted:#9bb0a2;--line:#27402f;
+  --accent:#f2c200;--accent-ink:#102219;--deep:#07110d;--deep-fg:#e9f0e4;--contour:#2c4a39;color-scheme:dark}
